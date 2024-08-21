@@ -36,7 +36,7 @@ namespace clib::windows::wmi
 
     private:
         std::wstring m_name;
-        ValueType value;
+        ValueType m_value;
 
         ValueType extractValue(const VARIANT& variant);
     };
@@ -54,13 +54,13 @@ namespace clib::windows::wmi
     template <typename ValueType>
     void WMIProperty<ValueType>::setValue(const VARIANT& variant)
     {
-        value = extractValue(variant);
+        m_value = extractValue(variant);
     }
 
     template <typename ValueType>
     ValueType WMIProperty<ValueType>::getValue() const
     {
-        return value;
+        return m_value;
     }
 
     /*

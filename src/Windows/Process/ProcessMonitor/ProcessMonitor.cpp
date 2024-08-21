@@ -16,15 +16,19 @@ using namespace clib::object;
 
 namespace clib::windows::process
 {
-	ProcessMonitor::ProcessMonitor() : IMonitor(DEFAULT_POLLING_INTERVAL_MS)
+	ProcessMonitor::ProcessMonitor()
+		: IMonitor(DEFAULT_POLLING_INTERVAL_MS)
 		, m_snapshot()
-	{ }
+	{
+	}
 
-	ProcessMonitor::ProcessMonitor(const size_t pollingIntervalMs) : IMonitor(pollingIntervalMs)
+	ProcessMonitor::ProcessMonitor(const size_t pollingIntervalMs)
+		: IMonitor(pollingIntervalMs)
 		, m_snapshot()
-	{ }
+	{
+	}
 
-	ProcessMonitor::~ProcessMonitor() 
+	ProcessMonitor::~ProcessMonitor()
 	{
 		disable();
 	}
@@ -32,7 +36,7 @@ namespace clib::windows::process
 	void ProcessMonitor::update()
 	{
 		const auto pCreateToolHelp32Snapshot = WinApi(SAFE_KERNEL32_DLL, CreateToolhelp32Snapshot);
-		ASSERT_INVALID_FARPROC(pCreateToolHelp32Snapshot);
+		ASSERT_INVALID_FARPROC(pCreateToolHelp32Snapshot)
 
 		AutoHandle<HANDLE> hSnapshot(pCreateToolHelp32Snapshot(TH32CS_SNAPPROCESS, 0));
 		if (!hSnapshot.isValid())
@@ -44,10 +48,10 @@ namespace clib::windows::process
 		pe.dwSize = sizeof(PROCESSENTRY32);
 
 		const auto pProcess32FirstW = WinApi(SAFE_KERNEL32_DLL, Process32FirstW);
-		ASSERT_INVALID_FARPROC(pProcess32FirstW);
+		ASSERT_INVALID_FARPROC(pProcess32FirstW)
 
 		const auto pProcess32NextW = WinApi(SAFE_KERNEL32_DLL, Process32NextW);
-		ASSERT_INVALID_FARPROC(pProcess32NextW);
+		ASSERT_INVALID_FARPROC(pProcess32NextW)
 
 		m_snapshot.clear();
 
@@ -58,10 +62,10 @@ namespace clib::windows::process
 
 		do
 		{
-			std::wstring wstrProcessName(pe.szExeFile);
-			m_snapshot.push_back(std::make_unique<Process>(wstrProcessName, pe.th32ProcessID, pe.th32ParentProcessID));
-
-		} while (pProcess32NextW(hSnapshot.get(), &pe));
+			std::wstring processName(pe.szExeFile);
+			m_snapshot.push_back(std::make_unique<Process>(processName, pe.th32ProcessID, pe.th32ParentProcessID));
+		}
+		while (pProcess32NextW(hSnapshot.get(), &pe));
 	}
 
 	bool ProcessMonitor::isProcessRunning(const Process& process) const

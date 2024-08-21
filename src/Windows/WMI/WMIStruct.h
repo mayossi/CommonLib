@@ -6,7 +6,7 @@ namespace clib::windows::wmi
 {
     /*
     * A base object for creating structs of data you want extracted via a WMIClient.
-    * Simply put, you can create WMIStucts containing WMIProperties that represent data
+    * Simply put, you can create WMIStruct containing WMIProperties that represent data
     * you want queried via a WMIClient.
     * 
     * Example:

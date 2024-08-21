@@ -25,6 +25,7 @@ namespace clib::object
 
 	IEvent IObserver::createEvent(const ICondition* pCondition)
 	{
-		return IEvent();
+		return {};
 	}
+
 }

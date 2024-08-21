@@ -45,7 +45,7 @@ namespace clib::windows::wmi
         template<typename WMIStructType>
         std::vector<WMIStructType> executeQuery(const std::string& query) const
         {
-            if (m_pWbemLocator == NULL || m_pWbemServices == NULL)
+            if (nullptr == m_pWbemLocator || nullptr == m_pWbemServices)
             {
                 throw clib::exception::Exception(safeString("Failed to execute query. Not connected to WMI server"));
             }
@@ -62,13 +62,13 @@ namespace clib::windows::wmi
                 throw clib::exception::Exception(safeString("Failed to execute WMI query. Invalid ExecQuery result"));
             }
 
-            if (NULL == pEnumerator)
+            if (nullptr == pEnumerator)
             {
                 throw clib::exception::Exception(safeString("Failed to execute WMI query. Invalid IEnumWbemClassObject enumerator value"));
             }
 
             std::vector<WMIStructType> queryResults;
-            IWbemClassObject* pClassObject = NULL;
+            IWbemClassObject* pClassObject = nullptr;
             ULONG uReturn = 0;
 
             while (pEnumerator)
@@ -95,7 +95,7 @@ namespace clib::windows::wmi
 	private:
 		/*
 		* This method takes the given wmi data struct, and attempts
-		* to populte each property in the data struct with data from the given class object pointer.
+		* to populate each property in the data struct with data from the given class object pointer.
         * 
         * @note: NULL or EMPTY values WILL NOT be added extracted, the relevant struct property will not be populated
 		*/

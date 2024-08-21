@@ -8,21 +8,24 @@
 
 namespace clib::object
 {
-    class IPublisher
-    {
-    public:
-        IPublisher() = default;
+	/**
+	 * A Publisher base object that is used to notify Subscribers when something happens.
+	 */
+	class IPublisher
+	{
+	public:
+		IPublisher() = default;
 
-        virtual ~IPublisher() = default;
+		virtual ~IPublisher() = default;
 
-        void addSubscriber(std::shared_ptr<ISubscriber> subscriber);
+		void addSubscriber(const std::shared_ptr<ISubscriber>& subscriber);
 
-        void removeSubscriber(std::shared_ptr<ISubscriber> subscriber);
+		void removeSubscriber(const std::shared_ptr<ISubscriber>& subscriber);
 
-        void notifySubscribers(std::shared_ptr<IEvent> pEvent);
+		void notifySubscribers(const std::shared_ptr<IEvent>& pEvent) const;
 
-    protected:
-        std::vector<std::shared_ptr<ISubscriber>> subscribers;
-    };
+	protected:
+		std::vector<std::shared_ptr<ISubscriber>> m_subscribers;
+	};
 
 } // namespace clib::object

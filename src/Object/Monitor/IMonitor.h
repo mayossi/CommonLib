@@ -10,7 +10,7 @@ namespace clib::object
 	* that updates an inner state member.
 	* 
 	* @note: Setting a monitor object's polling period to be too
-	* short may cause performence issues on certain devices.
+	* short may cause performance issues on certain devices.
 	*/
 	class IMonitor
 	{
@@ -37,7 +37,7 @@ namespace clib::object
 
 		void setPollingInterval(const size_t pollingIntervalMs);
 
-		~IMonitor();
+		virtual ~IMonitor();
 
 	private:
 		/*
@@ -54,4 +54,3 @@ namespace clib::object
 	};
 
 } // namespace clib::object
-

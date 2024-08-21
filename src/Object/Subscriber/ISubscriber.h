@@ -6,14 +6,14 @@
 
 namespace clib::object
 {
-    class ISubscriber
-    {
-    public:
-        ISubscriber() = default;
+	class ISubscriber
+	{
+	public:
+		ISubscriber() = default;
 
-        virtual void onEvent(std::shared_ptr<IEvent> e) = 0;
+		virtual void onEvent(std::shared_ptr<IEvent> e) = 0;
 
-        virtual ~ISubscriber() = default;
-    };
+		virtual ~ISubscriber() = default;
+	};
 
 } // namespace clib::object

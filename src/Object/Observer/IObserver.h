@@ -16,6 +16,16 @@ namespace clib::object
 	public:
 		IObserver() = default;
 
+		IObserver(const IObserver& other) = default;
+
+		IObserver& operator=(const IObserver& other) = default;
+
+		IObserver(IObserver&& other) noexcept = default;
+
+		IObserver& operator=(IObserver&& other) noexcept = default;
+
+		~IObserver() override = default;
+
 		void addCondition(std::unique_ptr<ICondition> condition);
 
 		/**
@@ -23,7 +33,7 @@ namespace clib::object
 		* if a condition returns true.
 		*/
 		void observe();
-		
+
 		/**
 		* Create an event object from the checked condition.
 		* 
@@ -35,8 +45,6 @@ namespace clib::object
 		* The default implementation returns an empty IEvent object.
 		*/
 		virtual IEvent createEvent(const ICondition* pCondition);
-
-		~IObserver() = default;
 
 	private:
 		std::vector<std::unique_ptr<ICondition>> m_conditions;

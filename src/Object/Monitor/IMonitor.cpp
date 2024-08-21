@@ -4,23 +4,25 @@
 namespace clib::object
 {
 	IMonitor::IMonitor(const size_t pollingIntervalMs)
-		: m_isEnabled(false)
+		: m_pollingThread()
 		, m_pollingIntervalMs(pollingIntervalMs)
-		, m_pollingThread()
-	{ }
+		, m_isEnabled(false)
+	{
+	}
 
 	void IMonitor::enable()
 	{
 		m_isEnabled = true;
-		m_pollingThread = std::thread([this]() {
-		
-			while (m_isEnabled)
+		m_pollingThread = std::thread(
+			[this]()
 			{
-				update();
-				std::this_thread::sleep_for(std::chrono::milliseconds(m_pollingIntervalMs));
+				while (m_isEnabled)
+				{
+					update();
+					std::this_thread::sleep_for(std::chrono::milliseconds(m_pollingIntervalMs));
+				}
 			}
-
-		});
+		);
 	}
 
 	void IMonitor::disable()
@@ -54,5 +56,3 @@ namespace clib::object
 	}
 
 } // namespace clib::object
-
-

@@ -9,7 +9,10 @@ namespace clib::autoHandle
 	class AutoHandle
 	{
 	public:
-		AutoHandle(HandleType handle) : m_handle(handle) {}
+		AutoHandle(HandleType handle)
+			: m_handle(handle)
+		{
+		}
 
 		// Disable copy
 		AutoHandle(const AutoHandle&) = delete;

@@ -44,10 +44,10 @@ namespace clib::windows::wmi
         HRESULT hRes = 0;
         
         const auto pCoUninitialize = WinApi(SAFE_OLE32_DLL, CoUninitialize);
-        ASSERT_INVALID_FARPROC(pCoUninitialize);
+        ASSERT_INVALID_FARPROC(pCoUninitialize)
 
         const auto pCoInitializeEx = WinApi(SAFE_OLE32_DLL, CoInitializeEx);
-        ASSERT_INVALID_FARPROC(pCoInitializeEx);
+        ASSERT_INVALID_FARPROC(pCoInitializeEx)
 
         hRes = pCoInitializeEx(0, COINIT_MULTITHREADED);
         if (FAILED(hRes))
@@ -56,7 +56,7 @@ namespace clib::windows::wmi
         }
 
         const auto pCoInitializeSecurity = WinApi(SAFE_OLE32_DLL, CoInitializeSecurity);
-        ASSERT_INVALID_FARPROC(pCoInitializeSecurity);
+        ASSERT_INVALID_FARPROC(pCoInitializeSecurity)
 
         hRes = pCoInitializeSecurity(
             NULL,
@@ -76,7 +76,7 @@ namespace clib::windows::wmi
             throw WinApiException(safeString("Failed to initialize security"), hRes);
         }
 
-        m_pWbemLocator = NULL;
+        m_pWbemLocator = nullptr;
         const auto pCoCreateInstance = WinApi(SAFE_OLE32_DLL, CoCreateInstance);
         ASSERT_INVALID_FARPROC(pCoCreateInstance);
 
@@ -84,14 +84,14 @@ namespace clib::windows::wmi
             CLSID_WbemLocator,
             0,
             CLSCTX_INPROC_SERVER,
-            IID_IWbemLocator, (LPVOID*)&m_pWbemLocator);
+            IID_IWbemLocator, reinterpret_cast<LPVOID*>(&m_pWbemLocator));
         if (FAILED(hRes))
         {
             pCoUninitialize();
             throw WinApiException(safeString("Failed to create IWbemLocator object"), hRes);
         }
 
-        m_pWbemServices = NULL;
+        m_pWbemServices = nullptr;
         hRes = m_pWbemLocator->ConnectServer(
             _bstr_t(m_namespace.c_str()),  // Object path of WMI namespace
             NULL,                          // User name. NULL = current user

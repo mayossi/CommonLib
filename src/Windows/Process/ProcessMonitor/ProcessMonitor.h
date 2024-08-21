@@ -1,7 +1,6 @@
 #pragma once
 #include <vector>
 #include <string>
-#include <thread>
 #include <memory>
 
 #include "..\Process.h"
@@ -10,24 +9,21 @@
 
 namespace clib::windows::process
 {
-	const size_t DEFAULT_POLLING_INTERVAL_MS = static_cast<size_t>(0.5 * 1000);
+	constexpr size_t DEFAULT_POLLING_INTERVAL_MS = static_cast<size_t>(0.5 * 1000);
 
 	/*
 	* Defines a Process Monitor object responsible for having an up-to-date
 	* snapshot of the running processes on the machine.
-	* 
-	* @note: Default process snapshot update is half a second (500ms).
 	*/
-	// todo: Add locking to updateSnapshot to prevent race between update and isRunning.
-	class ProcessMonitor : public clib::object::IMonitor
+	// todo: Add concurrency to updateSnapshot to prevent race between update and isRunning.
+	class ProcessMonitor final : public clib::object::IMonitor
 	{
-	
+
 	public:
-		/*
-		* Process Monitor default ctor
-		* Creating an object with this constructor method sets
-		* process polling period to 500ms.
-		*/
+		/**
+		 * Default Ctor.
+		 * @note This ctor method sets the default polling time to DEFAULT_POLLING_INTERVAL_MS (500ms).
+		 */
 		ProcessMonitor();
 
 		ProcessMonitor(const size_t pollingIntervalMs);
@@ -47,7 +43,7 @@ namespace clib::windows::process
 
 		bool isProcessRunning(const size_t processId) const;
 
-		~ProcessMonitor();
+		~ProcessMonitor() override;
 
 	private:
 		std::vector<std::unique_ptr<Process>> m_snapshot;
@@ -57,5 +53,3 @@ namespace clib::windows::process
 	};
 
 } // namespace clib::process::processMonitor
-
-

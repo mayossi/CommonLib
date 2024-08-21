@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace clib::windows::process
 {
 	enum class ProcessArchitecture
