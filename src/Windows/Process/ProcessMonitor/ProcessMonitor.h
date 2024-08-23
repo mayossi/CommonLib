@@ -2,6 +2,7 @@
 #include <vector>
 #include <string>
 #include <memory>
+#include <mutex>
 
 #include "../Process.h"
 #include "../../../Interfaces/Monitor/IMonitor.h"
@@ -15,8 +16,7 @@ namespace clib::windows::process
 	* Defines a Process Monitor object responsible for having an up-to-date
 	* snapshot of the running processes on the machine.
 	*/
-	// todo: Add concurrency to updateSnapshot to prevent race between update and isRunning.
-	class ProcessMonitor final : public clib::interfaces::IMonitor
+	class ProcessMonitor final : public interfaces::IMonitor
 	{
 
 	public:
@@ -26,7 +26,7 @@ namespace clib::windows::process
 		 */
 		ProcessMonitor();
 
-		ProcessMonitor(const size_t pollingIntervalMs);
+		explicit ProcessMonitor(const size_t pollingIntervalMs);
 
 		// Deleting copy constructor and assignment operator
 		ProcessMonitor(const ProcessMonitor&) = delete;
@@ -37,18 +37,19 @@ namespace clib::windows::process
 
 		ProcessMonitor& operator=(ProcessMonitor&&) noexcept = default;
 
-		bool isProcessRunning(const Process& process) const;
+		[[nodiscard]] bool isProcessRunning(const Process& process);
 
-		bool isProcessRunning(const std::wstring& processName) const;
+		[[nodiscard]] bool isProcessRunning(const std::wstring& processName);
 
-		bool isProcessRunning(const size_t processId) const;
+		[[nodiscard]] bool isProcessRunning(const size_t processId);
 
 		~ProcessMonitor() override;
 
 	private:
-		std::vector<std::unique_ptr<Process>> m_snapshot;
-
 		void update() override;
+
+		std::vector<std::unique_ptr<Process>> m_snapshot;
+		std::mutex m_snapshotMutex;
 
 	};
 

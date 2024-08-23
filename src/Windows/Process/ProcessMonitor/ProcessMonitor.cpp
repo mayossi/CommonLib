@@ -2,13 +2,12 @@
 
 #include <Windows.h>
 #include <TlHelp32.h>
-#include <algorithm>
 
-#include "..\..\..\AutoHandle.h"
-#include "..\..\..\ExceptionBase\Exception.h"
-#include "..\..\..\ExceptionBase\WinApiException.h"
-#include "..\..\..\SafeString.hpp"
-#include "..\..\..\WinApiResolver.hpp"
+#include "../../../AutoHandle.h"
+#include "../../../SafeString.hpp"
+#include "../../../WinApiResolver.hpp"
+#include "../../../ExceptionBase/Exception.h"
+#include "../../../ExceptionBase/WinApiException.h"
 
 using namespace clib::exception;
 using namespace clib::autoHandle;
@@ -36,6 +35,8 @@ namespace clib::windows::process
 
 	void ProcessMonitor::update()
 	{
+		std::lock_guard lock(m_snapshotMutex);
+
 		const auto pCreateToolHelp32Snapshot = WinApi(SAFE_KERNEL32_DLL, CreateToolhelp32Snapshot);
 		ASSERT_INVALID_FARPROC(pCreateToolHelp32Snapshot)
 
@@ -69,8 +70,9 @@ namespace clib::windows::process
 		while (pProcess32NextW(hSnapshot.get(), &pe));
 	}
 
-	bool ProcessMonitor::isProcessRunning(const Process& process) const
+	bool ProcessMonitor::isProcessRunning(const Process& process)
 	{
+		std::lock_guard lock(m_snapshotMutex);
 		for (const auto& runningProcess : m_snapshot)
 		{
 			if (runningProcess && process == *runningProcess)
@@ -82,8 +84,9 @@ namespace clib::windows::process
 		return false;
 	}
 
-	bool ProcessMonitor::isProcessRunning(const std::wstring& processName) const
+	bool ProcessMonitor::isProcessRunning(const std::wstring& processName)
 	{
+		std::lock_guard lock(m_snapshotMutex);
 		for (const auto& runningProcess : m_snapshot)
 		{
 			if (runningProcess && runningProcess->getName() == processName)
@@ -95,8 +98,9 @@ namespace clib::windows::process
 		return false;
 	}
 
-	bool ProcessMonitor::isProcessRunning(const size_t processId) const
+	bool ProcessMonitor::isProcessRunning(const size_t processId)
 	{
+		std::lock_guard lock(m_snapshotMutex);
 		for (const auto& runningProcess : m_snapshot)
 		{
 			if (runningProcess && runningProcess->getPid() == processId)
