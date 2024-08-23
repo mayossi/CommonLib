@@ -2,6 +2,7 @@
 
 #include <Windows.h>
 #include <TlHelp32.h>
+#include <algorithm>
 
 #include "..\..\..\AutoHandle.h"
 #include "..\..\..\ExceptionBase\Exception.h"
@@ -11,7 +12,7 @@
 
 using namespace clib::exception;
 using namespace clib::autoHandle;
-using namespace clib::object;
+using namespace clib::interfaces;
 
 
 namespace clib::windows::process

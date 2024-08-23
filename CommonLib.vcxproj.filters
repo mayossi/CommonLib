@@ -18,7 +18,7 @@
     <ClCompile Include="src\ExceptionBase\Exception.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Object\Event\IEvent.cpp">
+    <ClCompile Include="src\Interfaces\Event\IEvent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Windows\Process\ProcessMonitor\ProcessMonitor.cpp">
@@ -27,16 +27,16 @@
     <ClCompile Include="src\Windows\Process\Process.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Object\ServiceProvider\ServiceProvider.cpp">
+    <ClCompile Include="src\Interfaces\ServiceProvider\ServiceProvider.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Object\Publisher\IPublisher.cpp">
+    <ClCompile Include="src\Interfaces\Publisher\IPublisher.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Object\Observer\IObserver.cpp">
+    <ClCompile Include="src\Interfaces\Observer\IObserver.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Object\Monitor\IMonitor.cpp">
+    <ClCompile Include="src\Interfaces\Monitor\IMonitor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Windows\WMI\WMIClient.cpp">
@@ -62,7 +62,7 @@
     <ClInclude Include="src\SafeString.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Object\Event\IEvent.h">
+    <ClInclude Include="src\Interfaces\Event\IEvent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Windows\Process\ProcessMonitor\ProcessMonitor.h">
@@ -74,22 +74,22 @@
     <ClInclude Include="src\Windows\Process\ProcessArchitecture.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Object\Subscriber\ISubscriber.h">
+    <ClInclude Include="src\Interfaces\Subscriber\ISubscriber.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Object\Condition\ICondition.h">
+    <ClInclude Include="src\Interfaces\Condition\ICondition.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Object\ServiceProvider\ServiceProvider.h">
+    <ClInclude Include="src\Interfaces\ServiceProvider\ServiceProvider.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Object\Publisher\IPublisher.h">
+    <ClInclude Include="src\Interfaces\Publisher\IPublisher.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Object\Observer\IObserver.h">
+    <ClInclude Include="src\Interfaces\Observer\IObserver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Object\Monitor\IMonitor.h">
+    <ClInclude Include="src\Interfaces\Monitor\IMonitor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Windows\WMI\WMIClient.h">

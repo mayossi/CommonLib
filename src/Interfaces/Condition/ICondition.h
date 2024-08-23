@@ -5,7 +5,7 @@
 #include <unordered_map>
 
 
-namespace clib::object
+namespace clib::interfaces
 {
 	/**
 	* Defines a basic condition.
@@ -33,5 +33,5 @@ namespace clib::object
 		virtual ~ICondition() = default;
 	};
 
-} // namespace clib::object
+} // namespace clib::interfaces
 

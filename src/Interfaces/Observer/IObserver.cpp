@@ -1,7 +1,7 @@
 #include "IObserver.h"
 
 
-namespace clib::object
+namespace clib::interfaces
 {
 	void IObserver::addCondition(std::unique_ptr<ICondition> condition)
 	{
@@ -28,4 +28,4 @@ namespace clib::object
 		return {};
 	}
 
-}
+} // namespace clib::interfaces

@@ -5,11 +5,11 @@
 #include "..\Publisher\IPublisher.h"
 
 
-namespace clib::object
+namespace clib::interfaces
 {
 	/**
-	* Defines a basic Observer object.
-	* An observer is a IPublisher that notifies it's subscribers when a configured Condition object returns true.
+	* Defines a basic Observer interfaces.
+	* An observer is a IPublisher that notifies it's subscribers when a configured Condition interfaces returns true.
 	*/
 	class IObserver : public IPublisher
 	{
@@ -35,14 +35,14 @@ namespace clib::object
 		void observe();
 
 		/**
-		* Create an event object from the checked condition.
+		* Create an event interfaces from the checked condition.
 		* 
 		* The method is called by the IObserver::observe method and the returned 
-		* Event object is passed to all registed subscribers.
+		* Event interfaces is passed to all registed subscribers.
 		* 
 		* It's recommended to override the default implementation provided
-		* and consider the given condition object.
-		* The default implementation returns an empty IEvent object.
+		* and consider the given condition interfaces.
+		* The default implementation returns an empty IEvent interfaces.
 		*/
 		virtual IEvent createEvent(const ICondition* pCondition);
 
@@ -51,4 +51,4 @@ namespace clib::object
 
 	};
 
-} // namespace clib::object
+} // namespace clib::interfaces

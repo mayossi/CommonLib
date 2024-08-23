@@ -4,7 +4,7 @@
 #include "..\Event\IEvent.h"
 
 
-namespace clib::object
+namespace clib::interfaces
 {
 	class ISubscriber
 	{
@@ -16,4 +16,4 @@ namespace clib::object
 		virtual ~ISubscriber() = default;
 	};
 
-} // namespace clib::object
+} // namespace clib::interfaces

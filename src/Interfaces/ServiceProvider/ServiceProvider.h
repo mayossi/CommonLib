@@ -4,7 +4,7 @@
 #include <typeindex>
 
 
-namespace clib::object
+namespace clib::interfaces
 {
 	/**
 	* Defines a generic service provider
@@ -47,4 +47,4 @@ namespace clib::object
 	private:
 		static std::unordered_map<std::type_index, std::shared_ptr<void>> services;
 	};
-} // namespace clib::object
+} // namespace clib::interfaces

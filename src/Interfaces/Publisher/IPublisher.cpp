@@ -1,7 +1,7 @@
 #include "IPublisher.h"
 
 
-namespace clib::object
+namespace clib::interfaces
 {
 	void IPublisher::addSubscriber(const std::shared_ptr<ISubscriber>& subscriber)
 	{
@@ -22,4 +22,4 @@ namespace clib::object
 		}
 	}
 
-} // namespace clib::object
+} // namespace clib::interfaces

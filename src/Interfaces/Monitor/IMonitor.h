@@ -2,14 +2,14 @@
 #include <thread>
 
 
-namespace clib::object
+namespace clib::interfaces
 {
 	/*
 	* A monitor is in charge of monitoring something's state.
 	* The monitor supports running a thread that invokes a method
 	* that updates an inner state member.
 	* 
-	* @note: Setting a monitor object's polling period to be too
+	* @note: Setting a monitor interfaces's polling period to be too
 	* short may cause performance issues on certain devices.
 	*/
 	class IMonitor
@@ -42,7 +42,7 @@ namespace clib::object
 	private:
 		/*
 		* This method is in charge of checking and updating
-		* the state of the data/object being monitored by the Monitor.
+		* the state of the data/interfaces being monitored by the Monitor.
 		*/
 		virtual void update() = 0;
 
@@ -53,4 +53,4 @@ namespace clib::object
 		bool m_isEnabled;
 	};
 
-} // namespace clib::object
+} // namespace clib::interfaces

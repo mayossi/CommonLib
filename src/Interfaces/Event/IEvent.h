@@ -5,10 +5,10 @@
 #include <any>
 
 
-namespace clib::object
+namespace clib::interfaces
 {
 	/**
-	* Defines a basic Event object
+	* Defines a basic Event interfaces
 	*/
 	class IEvent
 	{
@@ -32,7 +32,7 @@ namespace clib::object
 		void setName(const std::string& eventName);
 
 		/**
-		* Add a parameter to the event object.
+		* Add a parameter to the event interfaces.
 		* Adding a param with an existing name will cause the data to be overwritten.
 		* This method supports chaining.
 		*/
@@ -61,4 +61,4 @@ namespace clib::object
 		size_t m_type;
 	};
 
-} // namespace clib::object
+} // namespace clib::interfaces

@@ -6,7 +6,7 @@
 constexpr size_t INVALID_EVENT_TYPE = -1;
 
 
-namespace clib::object
+namespace clib::interfaces
 {
 	IEvent::IEvent()
 		: m_params()
@@ -102,4 +102,4 @@ namespace clib::object
 		return keys;
 	}
 
-} // namespace clib::object
+} // namespace clib::interfaces

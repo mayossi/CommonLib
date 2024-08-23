@@ -6,10 +6,10 @@
 #include "..\Event\IEvent.h"
 
 
-namespace clib::object
+namespace clib::interfaces
 {
 	/**
-	 * A Publisher base object that is used to notify Subscribers when something happens.
+	 * A Publisher base interfaces that is used to notify Subscribers when something happens.
 	 */
 	class IPublisher
 	{
@@ -28,4 +28,4 @@ namespace clib::object
 		std::vector<std::shared_ptr<ISubscriber>> m_subscribers;
 	};
 
-} // namespace clib::object
+} // namespace clib::interfaces

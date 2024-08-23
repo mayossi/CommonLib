@@ -3,8 +3,8 @@
 #include <string>
 #include <memory>
 
-#include "..\Process.h"
-#include "..\..\..\Object\Monitor\IMonitor.h"
+#include "../Process.h"
+#include "../../../Interfaces/Monitor/IMonitor.h"
 
 
 namespace clib::windows::process
@@ -16,7 +16,7 @@ namespace clib::windows::process
 	* snapshot of the running processes on the machine.
 	*/
 	// todo: Add concurrency to updateSnapshot to prevent race between update and isRunning.
-	class ProcessMonitor final : public clib::object::IMonitor
+	class ProcessMonitor final : public clib::interfaces::IMonitor
 	{
 
 	public:

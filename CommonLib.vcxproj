@@ -19,12 +19,12 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Object\Monitor\IMonitor.cpp" />
-    <ClCompile Include="src\Object\Observer\IObserver.cpp" />
-    <ClCompile Include="src\Object\Event\IEvent.cpp" />
+    <ClCompile Include="src\Interfaces\Monitor\IMonitor.cpp" />
+    <ClCompile Include="src\Interfaces\Observer\IObserver.cpp" />
+    <ClCompile Include="src\Interfaces\Event\IEvent.cpp" />
     <ClCompile Include="src\ExceptionBase\Exception.cpp" />
-    <ClCompile Include="src\Object\ServiceProvider\ServiceProvider.cpp" />
-    <ClCompile Include="src\Object\Publisher\IPublisher.cpp" />
+    <ClCompile Include="src\Interfaces\ServiceProvider\ServiceProvider.cpp" />
+    <ClCompile Include="src\Interfaces\Publisher\IPublisher.cpp" />
     <ClCompile Include="src\Windows\Process\Process.cpp" />
     <ClCompile Include="src\Windows\Process\ProcessMonitor\ProcessMonitor.cpp" />
     <ClCompile Include="src\Windows\WMI\WMIClient.cpp" />
@@ -34,13 +34,13 @@
     <ClInclude Include="src\AutoHandle.h" />
     <ClInclude Include="src\ExceptionBase\Exception.h" />
     <ClInclude Include="src\ExceptionBase\WinApiException.h" />
-    <ClInclude Include="src\Object\Monitor\IMonitor.h" />
-    <ClInclude Include="src\Object\Observer\IObserver.h" />
-    <ClInclude Include="src\Object\Condition\ICondition.h" />
-    <ClInclude Include="src\Object\ServiceProvider\ServiceProvider.h" />
-    <ClInclude Include="src\Object\Publisher\IPublisher.h" />
-    <ClInclude Include="src\Object\Subscriber\ISubscriber.h" />
-    <ClInclude Include="src\Object\Event\IEvent.h" />
+    <ClInclude Include="src\Interfaces\Monitor\IMonitor.h" />
+    <ClInclude Include="src\Interfaces\Observer\IObserver.h" />
+    <ClInclude Include="src\Interfaces\Condition\ICondition.h" />
+    <ClInclude Include="src\Interfaces\ServiceProvider\ServiceProvider.h" />
+    <ClInclude Include="src\Interfaces\Publisher\IPublisher.h" />
+    <ClInclude Include="src\Interfaces\Subscriber\ISubscriber.h" />
+    <ClInclude Include="src\Interfaces\Event\IEvent.h" />
     <ClInclude Include="src\SafeString.hpp" />
     <ClInclude Include="src\WinApiResolver.hpp" />
     <ClInclude Include="src\Windows\Process\Process.h" />

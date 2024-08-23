@@ -1,7 +1,7 @@
 #include "IMonitor.h"
 
 
-namespace clib::object
+namespace clib::interfaces
 {
 	IMonitor::IMonitor(const size_t pollingIntervalMs)
 		: m_pollingThread()
@@ -55,4 +55,4 @@ namespace clib::object
 		}
 	}
 
-} // namespace clib::object
+} // namespace clib::interfaces
