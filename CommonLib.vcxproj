@@ -29,6 +29,7 @@
     <ClCompile Include="src\Windows\Process\ProcessMonitor\ProcessMonitor.cpp" />
     <ClCompile Include="src\Windows\WMI\WMIClient.cpp" />
     <ClCompile Include="src\Windows\WMI\WMIStruct.h" />
+    <ClCompile Include="src\Utilities\Vector\Vector.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\AutoHandle.h" />
@@ -48,6 +49,7 @@
     <ClInclude Include="src\Windows\Process\ProcessMonitor\ProcessMonitor.h" />
     <ClInclude Include="src\Windows\WMI\WMIClient.h" />
     <ClInclude Include="src\Windows\WMI\WMIProperty.h" />
+    <ClInclude Include="src\Utilities\Vector\Vector.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

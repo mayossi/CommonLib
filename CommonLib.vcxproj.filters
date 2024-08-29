@@ -45,6 +45,9 @@
     <ClCompile Include="src\Windows\WMI\WMIStruct.h">
       <Filter>Header Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Utilities\Vector\Vector.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\ExceptionBase\Exception.h">
@@ -96,6 +99,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Windows\WMI\WMIProperty.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utilities\Vector\Vector.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
