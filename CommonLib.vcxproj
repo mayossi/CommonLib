@@ -30,6 +30,7 @@
     <ClCompile Include="src\Windows\WMI\WMIClient.cpp" />
     <ClCompile Include="src\Windows\WMI\WMIStruct.h" />
     <ClCompile Include="src\Utilities\Vector\Vector.cpp" />
+    <ClCompile Include="src\Utilities\String\String.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\AutoHandle.h" />
@@ -50,6 +51,7 @@
     <ClInclude Include="src\Windows\WMI\WMIClient.h" />
     <ClInclude Include="src\Windows\WMI\WMIProperty.h" />
     <ClInclude Include="src\Utilities\Vector\Vector.h" />
+    <ClInclude Include="src\Utilities\String\String.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
