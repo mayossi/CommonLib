@@ -57,7 +57,7 @@ namespace clib::windows::pe::parser
 		return importedFunctions;
 	}
 
-	ProcessImportsTable getImportsTable(const HMODULE hModule)
+	PeImportsTable getImportsTable(const HMODULE hModule)
 	{
 		if (!hModule)
 		{
@@ -97,7 +97,7 @@ namespace clib::windows::pe::parser
 			pImportDescriptor++;
 		}
 
-		return ProcessImportsTable{importedModules};
+		return PeImportsTable{importedModules};
 	}
 
 } // namespace clib::windows::pe::parser

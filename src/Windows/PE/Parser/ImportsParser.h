@@ -23,7 +23,7 @@ namespace clib::windows::pe::parser
 		void* relAddress;
 	};
 
-	// Defines a module imported by a process.
+	// Defines a module imported by a PE.
 	struct ImportedModule
 	{
 		// Name of the imported module.
@@ -33,19 +33,19 @@ namespace clib::windows::pe::parser
 		std::vector<ImportedFunction> functions;
 	};
 
-	// A structure that wraps a process's IAT. Contains all imported modules.
-	struct ProcessImportsTable
+	// A structure that wraps an executable's IAT. Contains all imported modules.
+	struct PeImportsTable
 	{
 		std::vector<ImportedModule> imports;
 	};
 
 	/**
-	 * Parse a process's Import Address Table.
+	 * Parse a portable executable's Import Address Table.
 	 * Get all imported modules information including all imported methods,
 	 * their importing method (by ordinal or by name) and their relative addresses.
 	 *
-	 * @note This method was tested with the current process's hModule (returned from GetModuleHandle(NULL));
+	 * @attention This method was ONLY tested with the current process's hModule (returned from GetModuleHandle(NULL));
 	 */
-	ProcessImportsTable getImportsTable(const HMODULE hModule);
+	PeImportsTable getImportsTable(const HMODULE hModule);
 
 } // namespace clib::windows::pe::parser
