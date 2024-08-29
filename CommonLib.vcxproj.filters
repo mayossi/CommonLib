@@ -51,6 +51,9 @@
     <ClCompile Include="src\Utilities\String\String.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Windows\PE\Parser\ImportsParser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\ExceptionBase\Exception.h">
@@ -108,6 +111,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Utilities\String\String.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Windows\PE\Parser\ImportsParser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

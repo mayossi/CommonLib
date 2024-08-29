@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Windows\PE\Parser\ImportsParser.cpp" />
     <ClCompile Include="src\Interfaces\Monitor\IMonitor.cpp" />
     <ClCompile Include="src\Interfaces\Observer\IObserver.cpp" />
     <ClCompile Include="src\Interfaces\Event\IEvent.cpp" />
@@ -33,6 +34,7 @@
     <ClCompile Include="src\Utilities\String\String.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Windows\PE\Parser\ImportsParser.h" />
     <ClInclude Include="src\AutoHandle.h" />
     <ClInclude Include="src\ExceptionBase\Exception.h" />
     <ClInclude Include="src\ExceptionBase\WinApiException.h" />
