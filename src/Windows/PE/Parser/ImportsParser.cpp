@@ -29,7 +29,7 @@ namespace clib::windows::pe::parser
 		while (pOriginalThunk->u1.AddressOfData && pFirstThunk->u1.Function)
 		{
 			ImportedFunction importedFunction;
-			importedFunction.relAddress = reinterpret_cast<void*>(pFirstThunk->u1.Function);
+			importedFunction.relAddress = &pFirstThunk->u1.Function;
 
 			// Function is imported by ordinal
 			if (pOriginalThunk->u1.AddressOfData & IMAGE_ORDINAL_FLAG)
