@@ -5,7 +5,7 @@
 #include <Windows.h>
 
 
-namespace clib::windows::pe::parser
+namespace clib::windows::pe
 {
 	// Defines a function in an imported module.
 	struct ImportedFunction
@@ -39,6 +39,10 @@ namespace clib::windows::pe::parser
 		std::vector<ImportedModule> imports;
 	};
 
+} // namespace clib::windows::pe
+
+namespace clib::windows::pe::parser
+{
 	/**
 	 * Parse a portable executable's Import Address Table.
 	 * Get all imported modules information including all imported methods,
