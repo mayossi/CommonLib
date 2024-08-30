@@ -54,6 +54,12 @@
     <ClCompile Include="src\Windows\PE\Parser\ImportsParser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Windows\Hook\IHookInstaller.h">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Windows\Hook\IHookInstaller.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\ExceptionBase\Exception.h">
@@ -114,6 +120,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Windows\PE\Parser\ImportsParser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Windows\Hook\Hook.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
