@@ -19,7 +19,6 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Windows\Hook\IHookInstaller.cpp" />
     <ClCompile Include="src\Windows\Hook\IHookInstaller.h" />
     <ClCompile Include="src\Windows\PE\Parser\ImportsParser.cpp" />
     <ClCompile Include="src\Interfaces\Monitor\IMonitor.cpp" />

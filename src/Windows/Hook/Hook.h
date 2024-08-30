@@ -16,10 +16,10 @@ namespace clib::windows::hook
 		// The function to be hooked.
 		std::string functionName;
 
-		// Address of the hook function.
+		// Pointer to the hook function.
 		void* pHook;
 
-		// Address of the original function.
+		// Pointer to the original function.
 		void* pOriginal;
 
 		bool operator==(const Hook& other) const
