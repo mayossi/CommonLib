@@ -69,10 +69,10 @@ namespace clib::windows::hook
 
 	void IATHookInstaller::install(const Hook& hook)
 	{
-		const auto pGetModuleHandle = WinApi(SAFE_KERNEL32_DLL, GetModuleHandle);
-		ASSERT_INVALID_FARPROC(pGetModuleHandle);
+		const auto pGetModuleHandleW = WinApi(SAFE_KERNEL32_DLL, GetModuleHandleW);
+		ASSERT_INVALID_FARPROC(pGetModuleHandleW);
 
-		const auto peImports = pe::parser::getImportsTable(pGetModuleHandle(NULL));
+		const auto peImports = pe::parser::getImportsTable(pGetModuleHandleW(NULL));
 		auto importedFunction = getImportedFunction(peImports, hook.moduleName, hook.functionName);
 
 		// Setting the relAddress to be the address of our hooked function.
@@ -81,10 +81,10 @@ namespace clib::windows::hook
 
 	void IATHookInstaller::uninstall(const Hook& hook)
 	{
-		const auto pGetModuleHandle = WinApi(SAFE_KERNEL32_DLL, GetModuleHandle);
-		ASSERT_INVALID_FARPROC(pGetModuleHandle);
+		const auto pGetModuleHandleW = WinApi(SAFE_KERNEL32_DLL, GetModuleHandleW);
+		ASSERT_INVALID_FARPROC(pGetModuleHandleW);
 
-		const auto peImports = pe::parser::getImportsTable(pGetModuleHandle(NULL));
+		const auto peImports = pe::parser::getImportsTable(pGetModuleHandleW(NULL));
 		auto importedFunction = getImportedFunction(peImports, hook.moduleName, hook.functionName);
 
 		// Setting the relAddress to be the address of the original function.
