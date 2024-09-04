@@ -117,17 +117,15 @@ namespace clib::windows::process
 	Process ProcessMonitor::getProcessByName(const std::wstring& processName)
 	{
 		std::lock_guard lock(m_snapshotMutex);
-		for (auto pProcess : m_snapshot)
+		for (const auto& pProcess : m_snapshot)
 		{
 			if (string::toLower(pProcess->getName()) == string::toLower(processName))
 			{
-				return Process(
-					{
-						pProcess->getName(),
-						pProcess->getPid(),
-						pProcess->getParentPid()
-					}
-				);
+				return {
+					pProcess->getName(),
+					pProcess->getPid(),
+					pProcess->getParentPid()
+				};
 			}
 		}
 
