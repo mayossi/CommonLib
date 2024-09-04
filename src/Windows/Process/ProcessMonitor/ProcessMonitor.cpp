@@ -8,10 +8,12 @@
 #include "../../../WinApiResolver.hpp"
 #include "../../../ExceptionBase/Exception.h"
 #include "../../../ExceptionBase/WinApiException.h"
+#include "../../../Utilities/String/String.h"
 
 using namespace clib::exception;
 using namespace clib::autoHandle;
 using namespace clib::interfaces;
+using namespace clib::utilities;
 
 
 namespace clib::windows::process
@@ -110,6 +112,26 @@ namespace clib::windows::process
 		}
 
 		return false;
+	}
+
+	Process ProcessMonitor::getProcessByName(const std::wstring& processName)
+	{
+		std::lock_guard lock(m_snapshotMutex);
+		for (auto pProcess : m_snapshot)
+		{
+			if (string::toLower(pProcess->getName()) == string::toLower(processName))
+			{
+				return Process(
+					{
+						pProcess->getName(),
+						pProcess->getPid(),
+						pProcess->getParentPid()
+					}
+				);
+			}
+		}
+
+		return {};
 	}
 
 } // namespace clib::process::processMonitor

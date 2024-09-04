@@ -43,6 +43,8 @@ namespace clib::windows::process
 
 		[[nodiscard]] bool isProcessRunning(const size_t processId);
 
+		[[nodiscard]] Process getProcessByName(const std::wstring& processName);
+
 		~ProcessMonitor() override;
 
 	private:
