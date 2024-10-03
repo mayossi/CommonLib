@@ -12,8 +12,12 @@ namespace clib::filesystem
 	{
 	public:
 		File() = delete;
-		
-		explicit File(const std::string& path);
+
+		/**
+		* Creates a File object.
+		* The path MUST be a path to a valid file.
+		*/
+		explicit File(std::string path);
 
 		// Not allowing file copy operations
 		File(const File& other) = delete;
@@ -21,50 +25,40 @@ namespace clib::filesystem
 		File& operator=(const File& other) = delete;
 
 		// Supporting Move operations
-		File(File&& other) noexcept;
-		
-		File& operator=(File&& other) noexcept;
+		File(File&& other) noexcept = default;
 
-		~File();
+		File& operator=(File&& other) noexcept = default;
+
+		~File() = default;
 
 		bool exists() const;
 
-		/**
-		* Craete the file.
-		* @note: This function assumes the file DOES NOT exist.
-		*		 An exception will be thrown if the file already exists.
-		*/
-		void create();
-
-		/**
-		* Read the file.
-		* This function assumes the file exists, otherwise EXCEPTION is thrown.
-		* @note: This method supports reading binary data, null-terminators
-		*		 so the output's size should be taken in mind to avoid problems.
-		*/
 		std::string read() const;
-		
-		/**
-		* Write (append) data to the file.
-		* This function assumes the file exists. otherwise EXCEPTION is thrown.
-		*/
-		void write(const std::string& data);
-		
+
+		void write(
+			const std::string& data,
+			bool append = true
+		);
+
+		void setPath(const std::string& newPath);
+
 		std::string getPath() const;
 
 		std::string getFileName() const;
 
-		static void deleteFile(File& file);
+		std::string getParentDirectory() const;
 
-		static void renameFile(File& file, std::string& newFileName);
+		static File create(const std::string& path);
 
-		static void copyFile(File& source, File& dest);
+		static void remove(File& file);
+
+		static void rename(File& file, const std::string& newFileName);
 
 	private:
+		// Throws FileNotFoundException if the file does not exist.
+		void verifyFileExists() const;
+
 		std::string m_path;
 	};
 
 } // namespace clib::filesystem
-
-
-
