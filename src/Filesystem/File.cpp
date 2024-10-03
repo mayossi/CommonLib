@@ -84,18 +84,18 @@ namespace clib::filesystem
 
 	std::string File::getPath() const
 	{
-		return m_path;
+		return std::filesystem::absolute(m_path).string();
 	}
 
 	std::string File::getFileName() const
 	{
-		const auto filePath = std::filesystem::path(m_path);
+		const auto filePath = std::filesystem::absolute(m_path);
 		return filePath.filename().string();
 	}
 
 	std::string File::getParentDirectory() const
 	{
-		const auto filePath = std::filesystem::path(m_path);
+		const auto filePath = std::filesystem::absolute(m_path);
 		return filePath.parent_path().string();
 	}
 

@@ -42,6 +42,7 @@ namespace clib::filesystem
 
 		void setPath(const std::string& newPath);
 
+		// Returns the FULL file path.
 		std::string getPath() const;
 
 		std::string getFileName() const;
