@@ -52,16 +52,21 @@ namespace clib::utilities::string
 	}
 
 	template <typename StringType>
-	std::vector<StringType> split(const StringType& str, typename StringType::value_type delimiter)
+	std::vector<StringType> split(const StringType& str, const StringType& delimiter)
 	{
 		std::vector<StringType> tokens;
-		std::basic_stringstream<typename StringType::value_type> stream(str);
-		StringType token;
+		typename StringType::size_type start = 0;
+		typename StringType::size_type end = str.find(delimiter);
 
-		while (std::getline(stream, token, delimiter))
+		while (end != StringType::npos)
 		{
-			tokens.push_back(token);
+			tokens.push_back(str.substr(start, end - start));
+			start = end + delimiter.length();
+			end = str.find(delimiter, start);
 		}
+
+		// Add the last token
+		tokens.push_back(str.substr(start));
 
 		return tokens;
 	}
