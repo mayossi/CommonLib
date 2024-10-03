@@ -99,6 +99,11 @@ namespace clib::filesystem
 		return filePath.parent_path().string();
 	}
 
+	bool File::exists(const std::string& path)
+	{
+		return std::filesystem::is_regular_file(path);
+	}
+
 	File File::create(const std::string& path)
 	{
 		if (std::filesystem::is_regular_file(path))

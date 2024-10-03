@@ -48,6 +48,8 @@ namespace clib::filesystem
 
 		std::string getParentDirectory() const;
 
+		static bool exists(const std::string& path);
+
 		static File create(const std::string& path);
 
 		static void remove(File& file);
