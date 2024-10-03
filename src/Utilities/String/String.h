@@ -3,6 +3,7 @@
 #include <string>
 #include <algorithm>
 #include <cwctype>
+#include <vector>
 
 #include "../../SafeString.hpp"
 #include "../../ExceptionBase/Exception.h"
@@ -48,6 +49,26 @@ namespace clib::utilities::string
 			}
 		);
 		return str;
+	}
+
+	template <typename StringType>
+	std::vector<StringType> split(const StringType& str, const StringType& delimiter)
+	{
+		std::vector<StringType> tokens;
+		typename StringType::size_type start = 0;
+		typename StringType::size_type end = str.find(delimiter);
+
+		while (end != StringType::npos)
+		{
+			tokens.push_back(str.substr(start, end - start));
+			start = end + delimiter.length();
+			end = str.find(delimiter, start);
+		}
+
+		// Add the last token
+		tokens.push_back(str.substr(start));
+
+		return tokens;
 	}
 
 } // namespace clib::utilities::string

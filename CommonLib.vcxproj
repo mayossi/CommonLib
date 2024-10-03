@@ -19,6 +19,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Filesystem\FileExceptions.cpp" />
+    <ClCompile Include="src\Filesystem\File.cpp" />
+    <ClCompile Include="src\Base64\base64.cpp" />
+    <ClCompile Include="src\Base64\base64Exceptions.cpp" />
+    <ClCompile Include="src\Encryption\Encryption.cpp" />
     <ClCompile Include="src\Windows\Hook\IATHookInstaller\IATHookInstaller.cpp" />
     <ClCompile Include="src\Windows\Hook\IHookInstaller.h" />
     <ClCompile Include="src\Windows\PE\Parser\ImportsParser.cpp" />
@@ -36,6 +41,12 @@
     <ClCompile Include="src\Utilities\String\String.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Filesystem\FileExceptions.h" />
+    <ClInclude Include="src\Filesystem\File.h" />
+    <ClInclude Include="src\Base64\base64.h" />
+    <ClInclude Include="src\Base64\base64.hpp" />
+    <ClInclude Include="src\Base64\base64Exceptions.h" />
+    <ClInclude Include="src\Encryption\Encryption.h" />
     <ClInclude Include="src\Windows\Hook\IATHookInstaller\IATHookInstaller.h" />
     <ClInclude Include="src\Windows\Hook\Hook.h" />
     <ClInclude Include="src\Windows\PE\Parser\ImportsParser.h" />
