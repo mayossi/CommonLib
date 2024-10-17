@@ -19,6 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\RAIIMacros.h" />
+    <ClCompile Include="src\Interfaces\BackgroundWorker\IBackgroundWorker.cpp" />
     <ClCompile Include="src\Filesystem\FileExceptions.cpp" />
     <ClCompile Include="src\Filesystem\File.cpp" />
     <ClCompile Include="src\Base64\base64.cpp" />
@@ -41,6 +43,7 @@
     <ClCompile Include="src\Utilities\String\String.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Interfaces\BackgroundWorker\IBackgroundWorker.h" />
     <ClInclude Include="src\Filesystem\FileExceptions.h" />
     <ClInclude Include="src\Filesystem\File.h" />
     <ClInclude Include="src\Base64\base64.h" />

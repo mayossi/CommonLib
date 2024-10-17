@@ -75,6 +75,12 @@
     <ClCompile Include="src\Filesystem\FileExceptions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Interfaces\BackgroundWorker\IBackgroundWorker.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RAIIMacros.h">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\ExceptionBase\Exception.h">
@@ -159,6 +165,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Filesystem\FileExceptions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Interfaces\BackgroundWorker\IBackgroundWorker.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
