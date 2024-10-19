@@ -18,4 +18,9 @@ namespace clib::interfaces
 		}
 	}
 
+	IBackgroundWorker::~IBackgroundWorker()
+	{
+		IBackgroundWorker::stop();
+	}
+
 } // namespace clib::interfaces
