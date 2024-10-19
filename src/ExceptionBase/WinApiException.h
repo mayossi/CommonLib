@@ -5,6 +5,8 @@
 #include <sstream>
 #include "Exception.h"
 
+#include "../SafeString.hpp"
+
 
 namespace clib::exception
 {
@@ -31,7 +33,7 @@ namespace clib::exception
 		std::string buildErrorMessage(DWORD errorCode, Args... args)
 		{
 			std::ostringstream oss;
-			oss << "Windows API Error" << " " << errorCode << ": ";
+			oss << safeString("Windows API Error") << " " << errorCode << ": ";
 			oss << "{";
 			addParams(oss, args...);
 			oss << "}";
