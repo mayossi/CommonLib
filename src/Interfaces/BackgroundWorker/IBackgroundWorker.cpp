@@ -11,10 +11,14 @@ namespace clib::interfaces
 
 	void IBackgroundWorker::stop()
 	{
-		m_stopWorker = true;
-		if (m_workerThread.joinable())
+		// Only stop if not already stopped.
+		if (!m_stopWorker)
 		{
-			m_workerThread.join();
+			m_stopWorker = true;
+			if (m_workerThread.joinable())
+			{
+				m_workerThread.join();
+			}
 		}
 	}
 
