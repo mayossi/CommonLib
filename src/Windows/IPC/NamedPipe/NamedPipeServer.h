@@ -11,6 +11,14 @@
 
 namespace clib::windows::ipc
 {
+	/**
+	 * Windows Named Pipe server class.
+	 * Creates a named pipe server that runs inside a dedicated thread
+	 * and managed by start/stop methods.
+	 *
+	 * Client interaction is controlled by a provided callback function
+	 * that is automatically launched inside a dedicated thread when a client connects.
+	 */
 	class NamedPipeServer final : public interfaces::IBackgroundWorker
 	{
 	public:

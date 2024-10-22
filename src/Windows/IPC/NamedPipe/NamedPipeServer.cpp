@@ -21,7 +21,6 @@ namespace
 
 namespace clib::windows::ipc
 {
-
 	NamedPipeServer::NamedPipeServer(
 		const std::string& pipeName,
 		const std::function<void(autoHandle::AutoHandle<HANDLE>)>& callback,

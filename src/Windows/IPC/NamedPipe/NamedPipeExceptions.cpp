@@ -19,8 +19,8 @@ namespace clib::windows::ipc
 	std::string InvalidPipeNameException::getMessageString(const std::string& reason, const std::string& pipeName)
 	{
 		std::ostringstream oss;
-		oss << safeString("Pipe name: ") << pipeName << safeString(" is invalid.\n");
-		oss << safeString("Reason: ") << reason;
+		oss << safeString("Pipe name: ") << pipeName << safeString(" is invalid.");
+		oss << safeString(" Reason: ") << reason;
 		return oss.str();
 	}
 
