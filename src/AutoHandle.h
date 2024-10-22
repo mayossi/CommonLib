@@ -20,7 +20,7 @@ namespace clib::autoHandle
 		AutoHandle& operator=(const AutoHandle&) = delete;
 
 		// Move ctor
-		AutoHandle(const AutoHandle&& other) noexcept
+		AutoHandle(AutoHandle&& other) noexcept
 		{
 			m_handle = other.m_handle;
 			other.m_handle = NULL;
@@ -29,7 +29,7 @@ namespace clib::autoHandle
 		// Move assignment operator
 		AutoHandle& operator=(AutoHandle&& other) noexcept
 		{
-			if (this != other)
+			if (this->m_handle != other.m_handle)
 			{
 				if (isValid())
 				{
