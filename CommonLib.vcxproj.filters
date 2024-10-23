@@ -87,6 +87,9 @@
     <ClCompile Include="src\Windows\IPC\NamedPipe\NamedPipeExceptions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Windows\IPC\NamedPipe\NamedPipeValidator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\ExceptionBase\Exception.h">
@@ -180,6 +183,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Windows\IPC\NamedPipe\NamedPipeExceptions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Windows\IPC\NamedPipe\NamedPipeValidator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,8 +1,7 @@
 #include "NamedPipeServer.h"
 
-#include <regex>
-
 #include "NamedPipeExceptions.h"
+#include "NamedPipeValidator.h"
 #include "../../../SafeString.hpp"
 #include "../../../WinApiResolver.hpp"
 #include "../../../ExceptionBase/WinApiException.h"
@@ -10,14 +9,6 @@
 using namespace clib::autoHandle;
 using namespace clib::exception;
 
-
-namespace
-{
-	constexpr size_t PIPE_NAME_MAX_SIZE = 256;
-	const std::regex PIPE_NAME_INVALID_CHARS(R"([<>:"|?*])");
-	const std::string PIPE_NAME_PREFIX = safeString("\\\\.\\pipe\\");
-
-} // unnamed
 
 namespace clib::windows::ipc
 {
@@ -31,7 +22,7 @@ namespace clib::windows::ipc
 		, m_callback(callback)
 		, m_bufferSize(bufferSize)
 	{
-		validatePipeName();
+		validatePipeName(m_pipeName);
 		validatePipeBufferSize();
 	}
 
@@ -72,36 +63,6 @@ namespace clib::windows::ipc
 					m_bufferSize
 				);
 			}
-		}
-	}
-
-	void NamedPipeServer::validatePipeName() const
-	{
-		// Checking the pipe name prefix
-		if (m_pipeName.substr(0, PIPE_NAME_PREFIX.size()) != PIPE_NAME_PREFIX)
-		{
-			throw InvalidPipeNameException(safeString("Invalid prefix. Missing \\\\.\\pipe\\"), m_pipeName);
-		}
-
-		// Checking pipe name size
-		if (m_pipeName.size() > PIPE_NAME_MAX_SIZE)
-		{
-			throw InvalidPipeNameException(safeString("Invalid pipe name size. Exceeding max size (256)"), m_pipeName);
-		}
-
-		// Getting pipe name without the prefix
-		const std::string pipeIdentifier = m_pipeName.substr(PIPE_NAME_PREFIX.size());
-
-		// Checking pipe identifier is not empty
-		if (pipeIdentifier.empty())
-		{
-			throw InvalidPipeNameException(safeString("Missing pipe identifier"), m_pipeName);
-		}
-
-		// Making sure the pipe identifier does not contain invalid chars
-		if (std::regex_search(pipeIdentifier, PIPE_NAME_INVALID_CHARS))
-		{
-			throw InvalidPipeNameException(safeString("Invalid chars found in pipe identifier"), m_pipeName);
 		}
 	}
 

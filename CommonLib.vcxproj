@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Windows\IPC\NamedPipe\NamedPipeValidator.cpp" />
     <ClCompile Include="src\Windows\IPC\NamedPipe\NamedPipeExceptions.cpp" />
     <ClCompile Include="src\Windows\IPC\NamedPipe\NamedPipeServer.cpp" />
     <ClCompile Include="src\RAIIMacros.h" />
@@ -45,6 +46,7 @@
     <ClCompile Include="src\Utilities\String\String.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Windows\IPC\NamedPipe\NamedPipeValidator.h" />
     <ClInclude Include="src\Windows\IPC\NamedPipe\NamedPipeExceptions.h" />
     <ClInclude Include="src\Windows\IPC\NamedPipe\NamedPipeServer.h" />
     <ClInclude Include="src\Interfaces\BackgroundWorker\IBackgroundWorker.h" />

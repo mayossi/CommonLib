@@ -42,8 +42,6 @@ namespace clib::windows::ipc
 		std::function<void(autoHandle::AutoHandle<HANDLE>)> m_callback;
 		size_t m_bufferSize;
 
-		void validatePipeName() const;
-
 		void validatePipeBufferSize() const;
 
 		/**
