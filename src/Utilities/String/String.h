@@ -71,4 +71,21 @@ namespace clib::utilities::string
 		return tokens;
 	}
 
+	template <typename StringType>
+	std::vector<StringType> splitIntoChunks(const StringType& str, size_t chunkSize)
+	{
+		std::vector<StringType> chunks;
+		typename StringType::size_type length = str.size();
+		typename StringType::size_type start = 0;
+
+		while (start < length)
+		{
+			typename StringType::size_type end = std::min(start + chunkSize, length);
+			chunks.push_back(str.substr(start, end - start));
+			start = end;
+		}
+
+		return chunks;
+	}
+
 } // namespace clib::utilities::string
