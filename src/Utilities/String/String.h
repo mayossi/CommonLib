@@ -76,13 +76,11 @@ namespace clib::utilities::string
 	{
 		std::vector<StringType> chunks;
 		typename StringType::size_type length = str.size();
-		typename StringType::size_type start = 0;
 
-		while (start < length)
+		for (typename StringType::size_type start = 0; start < length; start += chunkSize)
 		{
-			typename StringType::size_type end = std::min(start + chunkSize, length);
-			chunks.push_back(str.substr(start, end - start));
-			start = end;
+			// Ensure the last chunk doesn't exceed the remaining characters
+			chunks.push_back(str.substr(start, length - start > chunkSize ? chunkSize : length - start));
 		}
 
 		return chunks;
