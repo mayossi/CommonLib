@@ -42,13 +42,10 @@ namespace clib::windows::ipc
 		std::function<void(autoHandle::AutoHandle<HANDLE>)> m_callback;
 		size_t m_bufferSize;
 
-		void validatePipeBufferSize() const;
-
 		/**
 		 * Creates a named pipe with the given name and buffer size.
-		 * The buffer size as buffer size for both input and output buffers.
-		 * The created named pipe is configured to have unlimited instances,
-		 * message type and duplex access (both client and server can RW).
+		 * @note: Buffer size dictates same for input and output.
+		 *		  Pipe has unlimited instances, with duplex access and PIPE_TYPE_MESSAGE.
 		 */
 		static autoHandle::AutoHandle<HANDLE> createNamedPipe(
 			const std::string& pipeName,

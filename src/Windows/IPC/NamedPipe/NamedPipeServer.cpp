@@ -1,13 +1,14 @@
 #include "NamedPipeServer.h"
 
+#include "PipeUtils.h"
 #include "NamedPipeExceptions.h"
-#include "NamedPipeValidator.h"
 #include "../../../SafeString.hpp"
 #include "../../../WinApiResolver.hpp"
 #include "../../../ExceptionBase/WinApiException.h"
 
 using namespace clib::autoHandle;
 using namespace clib::exception;
+using namespace clib::windows::ipc::pipeUtils;
 
 
 namespace clib::windows::ipc
@@ -23,7 +24,7 @@ namespace clib::windows::ipc
 		, m_bufferSize(bufferSize)
 	{
 		validatePipeName(m_pipeName);
-		validatePipeBufferSize();
+		validatePipeBufferSize(m_bufferSize);
 	}
 
 	NamedPipeServer::~NamedPipeServer()
@@ -63,14 +64,6 @@ namespace clib::windows::ipc
 					m_bufferSize
 				);
 			}
-		}
-	}
-
-	void NamedPipeServer::validatePipeBufferSize() const
-	{
-		if (m_bufferSize == 0)
-		{
-			throw InvalidPipeBufferSizeException();
 		}
 	}
 
