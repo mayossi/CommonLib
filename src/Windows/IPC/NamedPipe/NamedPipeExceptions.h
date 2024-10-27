@@ -5,6 +5,23 @@
 
 namespace clib::windows::ipc
 {
+	class InvalidPipeHandleException final : public exception::Exception
+	{
+	public:
+		InvalidPipeHandleException();
+	};
+
+	class NamedPipeConnectionException final : public exception::Exception
+	{
+	public:
+		explicit NamedPipeConnectionException(const std::string& reason,
+		                                      const std::string& pipeName);
+
+	private:
+		static std::string getMessageString(const std::string& reason,
+		                                    const std::string& pipeName);
+	};
+
 	class InvalidPipeNameException final : public exception::Exception
 	{
 	public:

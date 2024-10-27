@@ -9,6 +9,11 @@
 
 namespace clib::windows::ipc
 {
+	InvalidPipeHandleException::InvalidPipeHandleException()
+		: Exception(safeString("Invalid pipe handle exception"))
+	{
+	}
+
 	InvalidPipeNameException::InvalidPipeNameException(
 		const std::string& reason,
 		const std::string& pipeName)
@@ -32,6 +37,19 @@ namespace clib::windows::ipc
 	InvalidPipeHandleCreatedException::InvalidPipeHandleCreatedException(const std::string& pipeName)
 		: Exception(safeString("Invalid pipe handle received. Pipe name: ") + pipeName)
 	{
+	}
+
+	NamedPipeConnectionException::NamedPipeConnectionException(const std::string& reason, const std::string& pipeName)
+		: Exception(getMessageString(reason, pipeName))
+	{
+	}
+
+	std::string NamedPipeConnectionException::getMessageString(const std::string& reason, const std::string& pipeName)
+	{
+		std::ostringstream oss;
+		oss << safeString("Named pipe connection attempt failed. Pipe name: ") << pipeName;
+		oss << safeString(" Reason: ") << reason;
+		return oss.str();
 	}
 
 } // namespace clib::windows::ipc

@@ -2,6 +2,7 @@
 #include <Windows.h>
 
 #include "SafeString.hpp"
+#include "ExceptionBase/Exception.h"
 
 #define SAFE_USER32_DLL safeString("user32.dll")
 #define SAFE_KERNEL32_DLL safeString("kernel32.dll")
